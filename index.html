@@ -2,8 +2,58 @@
 <html>
     <head>
         <title>loading screen</title>
+        <style type="text/css">
+            html, body, h1, h2, h3, p, ol, ul li a {
+                padding: 0;
+                border: 0 none;
+                margin: 0;
+            }
+            header {
+                background-color: #fff;
+                height: 35vh;
+                position: relative;
+            }
+            header .container {
+                height: 35vh;
+                border: 1px solid black;
+                bottom: 0;
+            }
+            main {
+                background-color: #000;
+                height: 65vh;
+                color:#fff;
+            }
+            .container {
+                width: 1000px;
+                margin: 0 auto;
+            }
+            h1 {
+                bottom: 0;
+                 position: absolute; 
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello!!!</h1>
+        <header>
+            <div class="container">
+                <ul>
+                    <li>Health</li>
+                    <li>Stamina</li>
+                    <li>Orbs</li>
+                    <li>Shrines</li>
+                    <li>Seeds</li>
+                    <li>Rupees</li>
+                </ul>
+                <h1>Tip Header</h1>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <p>This is the tip paragraph in which we will read some useful information about the game process 
+                and this text should be kinda long i guess
+                </p>
+                <a href="#">Next tip</a>
+            </div>
+        </main>
     </body>
 </html>
