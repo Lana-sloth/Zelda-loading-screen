@@ -7,6 +7,7 @@
                 padding: 0;
                 border: 0 none;
                 margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
             }
             header {
                 background-color: #fff;
@@ -15,45 +16,127 @@
             }
             header .container {
                 height: 35vh;
-                border: 1px solid black;
-                bottom: 0;
+                /* border: 1px solid black; */
+                 bottom: 0; 
             }
             main {
                 background-color: #000;
-                height: 65vh;
+                height: 62.6vh;
                 color:#fff;
             }
             .container {
                 width: 1000px;
                 margin: 0 auto;
+                position: relative;
+            }
+            .container p {
+                width: 50%;
+                top: 10px;
+                display: inline-block;
+                position: absolute;
             }
             h1 {
-                bottom: 0;
-                 position: absolute; 
+                bottom: 5px;
+                position: absolute; 
             }
+            ul {
+                list-style-type: none;
+                text-align: right;
+            }
+            a {
+                top: 10px;
+                right: 0;
+                display: inline;
+                position: absolute;
+                text-decoration: none;
+                color: #fff;
+            }
+            a span {
+                background-color: #fff;
+                color: #000;
+                margin-left: 5px;
+                padding: 5px;
+                border-radius: 50%;
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                text-align: center;
+            }
+            
         </style>
     </head>
     <body>
         <header>
             <div class="container">
                 <ul>
-                    <li>Health</li>
-                    <li>Stamina</li>
-                    <li>Orbs</li>
-                    <li>Shrines</li>
-                    <li>Seeds</li>
-                    <li>Rupees</li>
+                    <li><span id="health"></span>&#10084;</li>
+                    <li><span id="stamina"></span>&#10084;</li>
+                    <li><span id="orbs"></span>&#10084;</li>
+                    <li><span id="shrines"></span>&#10084;</li>
+                    <li><span id="seeds"></span>&#10084;</li>
+                    <li><span id="rupees"></span>&#10084;</li>
                 </ul>
-                <h1>Tip Header</h1>
+                <h1 id="header"></h1>
             </div>
         </header>
         <main>
             <div class="container">
-                <p>This is the tip paragraph in which we will read some useful information about the game process 
-                and this text should be kinda long i guess
-                </p>
-                <a href="#">Next tip</a>
+                <p id="text"></p>
+                <a id="next-tip" href="#">Next tip<span>A</span></a>
             </div>
         </main>
     </body>
+
+    <script>
+        var info = {
+            health: '20 ',
+            stamina: '5 ',
+            orbs: '3 ',
+            shrines: '10 ',
+            seeds: '19 ',
+            rupees: '1 000 '
+        }
+        var tips = [
+            {
+                header: "Climbing Tip",
+                text: "The stamina required for climbing increases with the steepness of the cliff. To climb higher while using less stamina, it's important to find walls that have a gentler slope."
+            },
+            {
+                header: "Tip Header 2",
+                text: "This is the tip paragraph of tip 2 in which we will read some useful information about the game process and this text should be kinda long i guess"
+            },
+            {
+                header: "Tip Header 3",
+                text: "This is the tip paragraph of tip 3 in which we will read some useful information about the game process and this text should be kinda long i guess"
+            }
+        ]
+        var tipcount = 0;
+        
+        function tipInit(){
+            document.getElementById("header").innerHTML = tips[tipcount].header;
+            document.getElementById("text").innerHTML = tips[tipcount].text;
+        }
+        function infoInit(){
+            document.getElementById("health").innerHTML = info.health;
+            document.getElementById("stamina").innerHTML = info.stamina;
+            document.getElementById("orbs").innerHTML = info.orbs;
+            document.getElementById("shrines").innerHTML = info.shrines;
+            document.getElementById("seeds").innerHTML = info.seeds;
+            document.getElementById("rupees").innerHTML = info.rupees;
+        }
+
+        window.onload = function (){
+            infoInit();
+            tipInit();
+        }
+        document.getElementById("next-tip").addEventListener('click', function(){
+            if (tipcount < tips.length-1) {
+                tipcount ++;
+            }
+            else {
+                tipcount = 0;
+            }
+            tipInit();
+        });
+    </script>
 </html>
