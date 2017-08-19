@@ -2,6 +2,11 @@
 <html>
     <head>
         <title>loading screen</title>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
         <style type="text/css">
             html, body, h1, h2, h3, p, ol, ul li a {
                 padding: 0;
@@ -55,19 +60,19 @@
                 position: absolute;
                 text-decoration: none;
                 color: #fff;
+                font-size: 14px;
             }
             a span {
                 background-color: #fff;
                 color: #000;
                 margin-left: 5px;
-                padding: 5px;
+                padding: 2px;
                 border-radius: 50%;
                 display: inline-block;
-                width: 16px;
-                height: 16px;
+                width: 14px;
+                height: 14px;
                 text-align: center;
             }
-            
         </style>
     </head>
     <body>
@@ -136,16 +141,17 @@
         var tipcount = 0;
         
         function tipInit(){
-            document.getElementById("header").innerHTML = tips[tipcount].header;
-            document.getElementById("text").innerHTML = tips[tipcount].text;
+            console.log("visible");
+            $("#header").hide().html(tips[tipcount].header).fadeIn('slow');
+            $("#text").hide().html(tips[tipcount].text).fadeIn('slow');
         }
         function infoInit(){
-            document.getElementById("health").innerHTML = info.health;
-            document.getElementById("stamina").innerHTML = info.stamina;
-            document.getElementById("orbs").innerHTML = info.orbs;
-            document.getElementById("shrines").innerHTML = info.shrines;
-            document.getElementById("seeds").innerHTML = info.seeds;
-            document.getElementById("rupees").innerHTML = info.rupees;
+            $("#health").html(info.health);
+            $("#stamina").html(info.stamina);
+            $("#orbs").html(info.orbs);
+            $("#shrines").html(info.shrines);
+            $("#seeds").html(info.seeds);
+            $("#rupees").html(info.rupees);
         }
 
         window.onload = function (){
