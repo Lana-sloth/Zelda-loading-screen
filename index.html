@@ -2,18 +2,39 @@
 <html>
     <head>
         <title>loading screen</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous">
         </script>
         <style type="text/css">
+            /*---------------------------------------
+                Base
+            -----------------------------------------*/
             html, body, h1, h2, h3, p, ol, ul li a {
                 padding: 0;
                 border: 0 none;
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
             }
+            h1 {
+                bottom: 5px;
+                position: absolute; 
+            }
+            ul {
+                list-style-type: none;
+                text-align: right;
+                top: 40px;
+            }
+            .container {
+                width: 1000px;
+                margin: 0 auto;
+                position: relative;
+            }
+            /*---------------------------------------
+                Header
+            -----------------------------------------*/
             header {
                 background-color: #fff;
                 height: 35vh;
@@ -23,35 +44,34 @@
                 height: 35vh;
                 /* border: 1px solid black; */
                  bottom: 0; 
+                }
+            /*---------------------------------------
+                Info
+            -----------------------------------------*/
+            .fa {
+                width: 16px;
+                height: 16px;
+                text-align: center;
             }
+            .stamina {
+                background-color: #fff;
+                border-radius: 50%;
+                box-sizing: border-box;
+                border: 5px solid #000 !important;
+            }
+            /*---------------------------------------
+                Base
+            -----------------------------------------*/
             main {
                 background-color: #000;
                 height: 62.6vh;
                 color:#fff;
-            }
-            .container {
-                width: 1000px;
-                margin: 0 auto;
-                position: relative;
             }
             .container p {
                 width: 50%;
                 top: 10px;
                 display: inline-block;
                 position: absolute;
-            }
-            h1 {
-                bottom: 5px;
-                position: absolute; 
-            }
-            ul {
-                list-style-type: none;
-                text-align: right;
-            }
-            .icon {
-                display: inline-block;
-                width: 16px;
-                text-align: center;
             }
             a {
                 top: 10px;
@@ -79,29 +99,27 @@
         <header>
             <div class="container">
                 <ul>
-                    <li>
-                        <span id="health"></span>
-                        <span class="icon">&#9829;</span>
+                    <li id="health">
                     </li>
-                    <li>
+                    <li id="stamina">
                         <span id="stamina"></span>
-                        <span class="icon">&#10022;</span>
+                        
                     </li>
                     <li>
                         <span id="orbs"></span>
-                        <span class="icon">&#9737;</span>
+                        <i class="fa fa-gg-circle" aria-hidden="true"></i>
                     </li>
                     <li>
                         <span id="shrines"></span>
-                        <span class="icon">&#1130;</span>
+                        <i class="fa fa-universal-access" aria-hidden="true"></i>
                     </li>
                     <li>
                         <span id="seeds"></span>
-                        <span class="icon">&#9880;</span>
+                        <i class="fa fa-envira" aria-hidden="true"></i>
                     </li>
                     <li>
                         <span id="rupees"></span>
-                        <span class="icon">&#9672;</span>
+                        <i class="fa fa-first-order" aria-hidden="true"></i>
                     </li>
                 </ul>
                 <h1 id="header"></h1>
@@ -111,18 +129,20 @@
             <div class="container">
                 <p id="text"></p>
                 <a id="next-tip" href="#">Next tip<span>A</span></a>
+                <div id="progress-bar"></div>
+                <div id="saving"></div>
             </div>
         </main>
     </body>
 
     <script>
         var info = {
-            health: '20 ',
-            stamina: '5 ',
-            orbs: '3 ',
-            shrines: '10 ',
-            seeds: '19 ',
-            rupees: '1 000 '
+            health: 10,
+            stamina: 2,
+            orbs: 3,
+            shrines: 32,
+            seeds: 19,
+            rupees: 1000
         }
         var tips = [
             {
@@ -130,24 +150,33 @@
                 text: "The stamina required for climbing increases with the steepness of the cliff. To climb higher while using less stamina, it's important to find walls that have a gentler slope."
             },
             {
-                header: "Tip Header 2",
-                text: "This is the tip paragraph of tip 2 in which we will read some useful information about the game process and this text should be kinda long i guess"
+                header: "Aim Controls",
+                text: "Some items, like bows, allow you to target things by tilting the screen. Remember to be aware of your surroundings when doing this."
             },
             {
-                header: "Tip Header 3",
-                text: "This is the tip paragraph of tip 3 in which we will read some useful information about the game process and this text should be kinda long i guess"
+                header: "Throwing Weapons",
+                text: "If your weapon is close to breaking, try throwing it at an enemy using R. It will double your damage if it hits!"
             }
         ]
         var tipcount = 0;
         
         function tipInit(){
-            console.log("visible");
             $("#header").hide().html(tips[tipcount].header).fadeIn('slow');
             $("#text").hide().html(tips[tipcount].text).fadeIn('slow');
         }
         function infoInit(){
-            $("#health").html(info.health);
-            $("#stamina").html(info.stamina);
+            var heart = '<i class="fa fa-heart" aria-hidden="true"></i>';
+            var circle = '<i class="fa stamina" aria-hidden="true"></i>';
+            var healthContent = "";
+            var staminaContent = "";
+            for(var i=0; i < info.health; i++){
+                healthContent += " " + heart;
+                $("#health").html(healthContent);
+            }
+            for(var i=0; i < info.stamina; i++){
+                staminaContent += " " + circle;
+                $("#stamina").html(staminaContent);
+            }
             $("#orbs").html(info.orbs);
             $("#shrines").html(info.shrines);
             $("#seeds").html(info.seeds);
