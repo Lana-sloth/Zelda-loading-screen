@@ -19,38 +19,36 @@
                 font-family: Arial, Helvetica, sans-serif;
             }
             body {
+                height: 100vh;
+                background-color: #000;
                 font-size: 16px;
                 font-style: italic;
                 line-height: 1.4;
+                display: flex;
+                flex-direction: column;
+                /* justify-content: space-between; */
             }
             h1 {
                 font-size: 32px;
-                bottom: 5px;
-                position: absolute; 
+                /* bottom: 5px; */
+                /* position: absolute;  */
             }
             ul {
                 list-style-type: none;
                 text-align: right;
-                top: 40px;
-            }
-            .container {
-                width: 1000px;
-                margin: 0 auto;
-                position: relative;
+                /* top: 40px; */
             }
             /*---------------------------------------
                 Header
             -----------------------------------------*/
             header {
+                flex-direction: column;
+                justify-content: space-between;
                 background-color: #fff;
-                height: 35vh;
-                position: relative;
+                /* position: relative; */
+                padding: 0 20px;
+                min-height: 175px;
             }
-            header .container {
-                height: 35vh;
-                border: 1px solid black;
-                bottom: 0; 
-                }
             /*---------------------------------------
                 Info
             -----------------------------------------*/
@@ -69,27 +67,25 @@
                 Content
             -----------------------------------------*/
             main {
-                background-color: #000;
-                height: 65vh;
+                padding: 0 20px;
                 color:#fff;
-                position: relative;
+                flex-grow: 1;
+                display: flex;
+                /* position: relative; */
             }
-            main .container {
-                height: 62vh;
-                border: 1px solid #fff;
-
-            }
-            .container p {
+            p {
                 width: 50%;
-                top: 10px;
-                display: inline-block;
-                position: absolute;
+                /* top: 10px; */
+                /* position: absolute; */
+            }
+            .button-container {
+                flex: 1 0 auto;
+                text-align: right;
             }
             a {
-                top: 10px;
-                right: 0;
-                display: inline;
-                position: absolute;
+                /* right: 0; */
+                /* top: 10px; */
+                /* position: absolute; */
                 text-decoration: none;
                 color: #fff;
                 font-size: 14px;
@@ -106,17 +102,22 @@
                 text-align: center;
             }
             /*---------------------------------------
+                Footer
+            -----------------------------------------*/
+            footer {
+                padding: 0 20px;
+            }
+            /*---------------------------------------
                 Progress bar
             -----------------------------------------*/
             #progress-bar {
                 background-color: #ccc;
                 background-size: 150px 50px;
-                border: 1px solid #fff;
                 width: 150px;
                 height: 50px;
-                position: absolute;
+                /* position: absolute;
                 bottom: 0;
-                right: 0;
+                right: 0; */
             }
             #progress-bar div {
                 background-color: #fff;
@@ -128,49 +129,51 @@
             -----------------------------------------*/
             #spinner {
                 background-color: #fff;
+                width: 30px;
+                height: 30px;
             }
         </style>
     </head>
     <body>
         <header>
-            <div class="container">
-                <ul>
-                    <li id="health">
-                    </li>
-                    <li id="stamina">
-                        <span id="stamina"></span>
-                        
-                    </li>
-                    <li>
-                        <span id="orbs"></span>
-                        <i class="fa fa-gg-circle" aria-hidden="true"></i>
-                    </li>
-                    <li>
-                        <span id="shrines"></span>
-                        <i class="fa fa-universal-access" aria-hidden="true"></i>
-                    </li>
-                    <li>
-                        <span id="seeds"></span>
-                        <i class="fa fa-envira" aria-hidden="true"></i>
-                    </li>
-                    <li>
-                        <span id="rupees"></span>
-                        <i class="fa fa-first-order" aria-hidden="true"></i>
-                    </li>
-                </ul>
-                <h1 id="header"></h1>
-            </div>
+            <ul>
+                <li id="health">
+                </li>
+                <li id="stamina">
+                    <span id="stamina"></span>
+                    
+                </li>
+                <li>
+                    <span id="orbs"></span>
+                    <i class="fa fa-gg-circle" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <span id="shrines"></span>
+                    <i class="fa fa-universal-access" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <span id="seeds"></span>
+                    <i class="fa fa-envira" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <span id="rupees"></span>
+                    <i class="fa fa-first-order" aria-hidden="true"></i>
+                </li>
+            </ul>
+            <h1 id="header"></h1>
         </header>
         <main>
-            <div class="container">
-                <p id="text"></p>
+            <p id="text"></p>
+            <div class="button-container">
                 <a id="next-tip" href="#">Next tip<span>A</span></a>
-                <div id="progress-bar">
-                    <div></div>
-                </div>
-                <div id="spinner"></div>
             </div>
         </main>
+        <footer>
+            <div id="progress-bar">
+                <div></div>
+            </div>
+            <div id="spinner"></div>
+        </footer>
     </body>
 
     <script>
