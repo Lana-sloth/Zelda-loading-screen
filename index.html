@@ -12,31 +12,27 @@
             /*---------------------------------------
                 Base
             -----------------------------------------*/
-            html, body, h1, h2, h3, p, ol, ul li a {
+            html, body, div, h1, h2, h3, p, ol, ul, li, a {
                 padding: 0;
                 border: 0 none;
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
             }
             body {
-                height: 100vh;
                 background-color: #000;
                 font-size: 16px;
                 font-style: italic;
                 line-height: 1.4;
                 display: flex;
                 flex-direction: column;
-                /* justify-content: space-between; */
             }
             h1 {
                 font-size: 32px;
-                /* bottom: 5px; */
-                /* position: absolute;  */
             }
             ul {
                 list-style-type: none;
                 text-align: right;
-                /* top: 40px; */
+                padding-top: 20px;
             }
             /*---------------------------------------
                 Header
@@ -46,8 +42,8 @@
                 justify-content: space-between;
                 background-color: #fff;
                 /* position: relative; */
-                padding: 0 20px;
-                min-height: 175px;
+                padding: 0 10%;
+                min-height: 200px;
             }
             /*---------------------------------------
                 Info
@@ -67,16 +63,15 @@
                 Content
             -----------------------------------------*/
             main {
-                padding: 0 20px;
+                padding: 10px 10%;
                 color:#fff;
                 flex-grow: 1;
                 display: flex;
+                min-height: 200px;
                 /* position: relative; */
             }
             p {
                 width: 50%;
-                /* top: 10px; */
-                /* position: absolute; */
             }
             .button-container {
                 flex: 1 0 auto;
@@ -105,7 +100,10 @@
                 Footer
             -----------------------------------------*/
             footer {
-                padding: 0 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                padding: 20px 10%;
             }
             /*---------------------------------------
                 Progress bar
@@ -128,46 +126,84 @@
                 Spinner
             -----------------------------------------*/
             #spinner {
+                order: -1;
                 background-color: #fff;
                 width: 30px;
                 height: 30px;
             }
+            /*---------------------------------------
+                Spinner
+            -----------------------------------------*/
+            @media screen and (max-width: 700px) {
+                /* .button-container {
+                    display: block;
+                    flex: 1 0 auto;
+                } */
+                header {
+                    padding: 10px 3%;
+                }
+                main {
+                    display: block;
+                    padding: 10px 3%;
+                }
+                footer {
+                    padding: 10px 3%;
+                }
+                p {
+                    width: inherit;
+                    height: 100px;
+                }
+                .button-container {
+                    margin: 20px 0;
+                }
+                footer {
+                    display: block;
+                }
+                #spinner {
+                    margin: 0 auto;
+                }
+                #progress-bar {
+                    margin: 20px auto;
+                }
+            }
         </style>
     </head>
     <body>
-        <header>
-            <ul>
-                <li id="health">
-                </li>
-                <li id="stamina">
-                    <span id="stamina"></span>
-                    
-                </li>
-                <li>
-                    <span id="orbs"></span>
-                    <i class="fa fa-gg-circle" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span id="shrines"></span>
-                    <i class="fa fa-universal-access" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span id="seeds"></span>
-                    <i class="fa fa-envira" aria-hidden="true"></i>
-                </li>
-                <li>
-                    <span id="rupees"></span>
-                    <i class="fa fa-first-order" aria-hidden="true"></i>
-                </li>
-            </ul>
-            <h1 id="header"></h1>
-        </header>
-        <main>
-            <p id="text"></p>
-            <div class="button-container">
-                <a id="next-tip" href="#">Next tip<span>A</span></a>
-            </div>
-        </main>
+        <div>
+            <header>
+                <ul>
+                    <li id="health">
+                    </li>
+                    <li id="stamina">
+                        <span id="stamina"></span>
+                        
+                    </li>
+                    <li>
+                        <span id="orbs"></span>
+                        <i class="fa fa-gg-circle" aria-hidden="true"></i>
+                    </li>
+                    <li>
+                        <span id="shrines"></span>
+                        <i class="fa fa-universal-access" aria-hidden="true"></i>
+                    </li>
+                    <li>
+                        <span id="seeds"></span>
+                        <i class="fa fa-envira" aria-hidden="true"></i>
+                    </li>
+                    <li>
+                        <span id="rupees"></span>
+                        <i class="fa fa-first-order" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                <h1 id="header"></h1>
+            </header>
+            <main>
+                <p id="text"></p>
+                <div class="button-container">
+                    <a id="next-tip" href="#">Next tip<span>A</span></a>
+                </div>
+            </main>
+        </div>
         <footer>
             <div id="progress-bar">
                 <div></div>
